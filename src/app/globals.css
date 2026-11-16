@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --background: #0b0f19;
+  --card: #151b2b;
+  --card-hover: #1b2336;
+  --primary: #8b5cf6;
+  --secondary: #a78bfa;
+  --text: #f1f5f9;
+  --muted: #8993a8;
+  --border: #283147;
+  --success: #34d399;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--background);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+button, input {
+  font: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.header {
+  margin-bottom: 38px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 55px;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: var(--primary);
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+.tag {
+  color: var(--secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.header h1 {
+  font-size: clamp(30px, 5vw, 44px);
+  letter-spacing: -1.5px;
+  margin-bottom: 12px;
+}
+
+.header p {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.stat-value.purple {
+  color: var(--secondary);
+}
+
+.stat-value.green {
+  color: var(--success);
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 22px;
+}
+
+.panel-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.task-form {
+  display: flex;
+  gap: 12px;
+}
+
+.task-input {
+  flex: 1;
+  min-width: 0;
+  padding: 15px 17px;
+  color: var(--text);
+  background: #0e1422;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.task-input:focus {
+  border-color: var(--primary);
+}
+
+.task-input::placeholder {
+  color: #68738a;
+}
+
+.add-button {
+  padding: 0 22px;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-button:hover:not(:disabled) {
+  background: #7c3aed;
+  transform: translateY(-2px);
+}
+
+.add-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 17px;
+  background: #0e1422;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: 0.2s;
+}
+
+.task-item:hover {
+  background: var(--card-hover);
+  border-color: #414d68;
+}
+
+.task-title {
+  font-size: 14px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.task-badge {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: rgba(52, 211, 153, 0.12);
+  color: var(--success);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.empty-state {
+  padding: 35px 15px;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+}
+
+.footer {
+  text-align: center;
+  color: #647089;
+  font-size: 12px;
+  padding: 25px 0;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 35px 16px;
+  }
+
+  .logo {
+    margin-bottom: 40px;
+  }
+
+  .dashboard {
+    gap: 8px;
+  }
+
+  .stat-card {
+    padding: 15px 10px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+
+  .panel {
+    padding: 20px 15px;
+  }
+
+  .task-form {
+    flex-direction: column;
+  }
+
+  .add-button {
+    padding: 14px;
+  }
+}
