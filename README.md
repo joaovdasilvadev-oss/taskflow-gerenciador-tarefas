@@ -1,66 +1,67 @@
-# TaskFlow — Gerenciador de Tarefas
+# TaskFlow – Gerenciador de Tarefas
 
-Aplicação web de gerenciamento de tarefas desenvolvida com Next.js 15, React e TypeScript.
+Aplicação web para gerenciamento de tarefas, desenvolvida com Next.js, React e TypeScript.
 
-O TaskFlow permite visualizar tarefas, adicionar novas atividades e acompanhar a quantidade de tarefas pendentes e concluídas em uma interface moderna e responsiva.
+## 🌐 Projeto publicado
 
-## Funcionalidades
+Acesse: https://taskflow-gerenciador-tarefas.vercel.app/
 
-- Listagem de tarefas iniciais.
-- Adição de novas tarefas.
-- Atualização automática do contador de tarefas.
-- Indicadores de tarefas pendentes e concluídas.
-- Componente personalizado para contagem de tarefas.
-- Interface responsiva.
-- Testes automatizados com Jest e Testing Library.
+## 🚀 Tecnologias utilizadas
 
-## Tecnologias utilizadas
-
-- Next.js 15
+- Next.js
 - React
 - TypeScript
-- CSS3
+- CSS
 - Jest
 - React Testing Library
+- GitHub Actions
+- Vercel
 
-## Estrutura do projeto
+## ⚙️ Funcionalidades
 
-```text
-lista-tarefas/
-├── src/
-│   ├── app/
-│   │   ├── globals.css
-│   │   ├── layout.tsx
-│   │   └── page.tsx
-│   ├── components/
-│   │   ├── GerenciadorTarefas.tsx
-│   │   ├── ListaTarefas.tsx
-│   │   └── NovaTarefa.tsx
-│   ├── data/
-│   │   └── tarefas.ts
-│   └── hooks/
-│       └── useContadorDeTarefas.ts
-├── test/
-│   ├── NovaTarefa.test.tsx
-│   ├── page.test.tsx
-│   └── useContadorDeTarefas.test.tsx
-├── jest.config.ts
-├── jest.setup.ts
-└── package.json
+- Adicionar novas tarefas.
+- Visualizar tarefas cadastradas.
+- Acompanhar o total de tarefas.
+- Acompanhar tarefas concluídas.
+- Interface simples e responsiva.
+
+## 🧪 Testes automatizados
+
+O projeto utiliza Jest e React Testing Library para verificar o funcionamento dos componentes e funcionalidades.
+
+Para executar os testes localmente:
+
+```bash
+npm install
+npm test
 ```
 
-## Como executar
+## 🔄 Pipeline CI/CD
+
+O projeto possui uma pipeline automatizada configurada com GitHub Actions.
+
+A cada atualização enviada para a branch `main`, o fluxo executa:
+
+1. Instalação das dependências.
+2. Verificação de código com ESLint.
+3. Execução dos testes automatizados.
+4. Geração do build de produção.
+5. Deploy automático na Vercel após a validação bem-sucedida.
+
+As credenciais de acesso à Vercel são armazenadas com segurança nos Secrets do GitHub.
+
+## ▶️ Executar localmente
 
 Clone o repositório:
 
 ```bash
-git clone URL_DO_REPOSITORIO
+git clone https://github.com/joaovdasilvadev-oss/taskflow-gerenciador-tarefas.git
 ```
 
 Entre na pasta:
 
 ```bash
-cd lista-tarefas
+cd taskflow-gerenciador-tarefas
 ```
 
 Instale as dependências:
@@ -69,47 +70,14 @@ Instale as dependências:
 npm install
 ```
 
-Execute o projeto:
+Inicie o servidor:
 
 ```bash
 npm run dev
 ```
 
-Acesse http://localhost:3000.
+Acesse http://localhost:3000 no navegador.
 
-## Executar os testes
+## 👨‍💻 Autor
 
-Para executar todos os testes:
-
-```bash
-npm test
-```
-
-Para acompanhar os testes automaticamente:
-
-```bash
-npm run test:watch
-```
-
-Para gerar relatório de cobertura:
-
-```bash
-npm run test:coverage
-```
-
-## Testes automatizados
-
-O projeto possui testes para:
-
-- Componente de adição de tarefas.
-- Validação de tarefas vazias.
-- Hook personalizado de contagem.
-- Renderização da página inicial.
-
-## Observação
-
-Os dados são simulados localmente e as novas tarefas são mantidas no estado da aplicação. Não há integração com banco de dados nesta versão.
-
----
-
-Desenvolvido como projeto prático de estudos em desenvolvimento web.
+Desenvolvido como projeto acadêmico para prática de desenvolvimento web e automação CI/CD.
