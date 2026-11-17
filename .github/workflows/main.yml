@@ -1,0 +1,73 @@
+name: CI/CD - TaskFlow
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validar:
+    name: Testes e validação
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar ESLint
+        run: npm run lint
+
+      - name: Executar testes
+        run: npm run test
+
+      - name: Gerar build
+        run: npm run build
+
+  deploy:
+    name: Deploy na Vercel
+    runs-on: ubuntu-latest
+    needs: validar
+
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Instalar Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Configurar projeto Vercel
+        run: vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
+
+      - name: Gerar build da Vercel
+        run: vercel build --prod --token="$VERCEL_TOKEN"
+
+      - name: Publicar na Vercel
+        run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
